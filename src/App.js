@@ -2,9 +2,14 @@ import React, { Suspense, useState } from 'react';
 import { Canvas } from 'react-three-fiber';
 import * as THREE from 'three';
 
+// Models
 import Cabin from './components/Cabin';
 import Plane from './components/Plane';
 
+// Lights
+import Lights from './components/Lights';
+
+// Helpers
 import { downWard } from './helpers/misc';
 import data from './info.json';
 
@@ -36,24 +41,10 @@ const App = () => {
             onMouseUp={() => setHold(false)}
             onMouseMove={e => hold && specifyZboundries(e)}
         >
-            <ambientLight intensity={0.1} />
-            <directionalLight position={[0, 0, 19]} />
-            <spotLight
-                position={[-10, 12, 10]}
-                penumbra={1}
-                castShadow
-                intensity={0.5}
-            />
-            <spotLight
-                position={[10, 12, 10]}
-                penumbra={1}
-                castShadow
-                intensity={0.5}
-            />
+            <Lights />
             <Plane />
             <Suspense fallback={null}>
                 <Cabin move={zPos} />
-                {/* <Seat /> */}
             </Suspense>
         </Canvas>
     );
