@@ -1,7 +1,7 @@
 import Cabin from './Cabin';
 import Seats from './Seats';
 
-const Model = props => {
+const index = props => {
     return (
         <group dispose={null}>
             <Seats />
@@ -10,4 +10,4 @@ const Model = props => {
     );
 };
 
-export default Model;
+export default index;
