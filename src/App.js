@@ -3,7 +3,7 @@ import { Canvas } from 'react-three-fiber';
 import * as THREE from 'three';
 
 // Models
-import Cabin from './components/Cabin';
+import Model from './components/Model';
 import Plane from './components/Plane';
 
 // Lights
@@ -44,7 +44,7 @@ const App = () => {
             <Lights />
             <Plane />
             <Suspense fallback={null}>
-                <Cabin move={zPos} />
+                <Model move={zPos} />
             </Suspense>
         </Canvas>
     );
