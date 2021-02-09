@@ -35,6 +35,7 @@ const App = () => {
     return (
         <Canvas
             camera={data.camera_setting}
+            shadowMap
             onCreated={({ gl }) => {
                 gl.shadowMap.enabled = true;
                 gl.shadowMap.type = THREE.PCFSoftShadowMap;
