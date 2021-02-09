@@ -20,8 +20,11 @@ const Cabin = ({ move }) => {
             <mesh
                 material={materials['BASE.005']}
                 geometry={nodes.Cube000.geometry}
-                material-color='#434343'
-            />
+                receiveShadow
+                castShadow
+            >
+                <meshPhysicalMaterial color='gray' />
+            </mesh>
             <mesh
                 material={materials.VENTANA}
                 geometry={nodes.Cube000_1.geometry}
@@ -29,8 +32,9 @@ const Cabin = ({ move }) => {
             <mesh
                 material={materials.sillones}
                 geometry={nodes.Cube000_2.geometry}
-                material-color='white'
-            />
+            >
+                <meshPhysicalMaterial color='white' opacity={0.6} transparent />
+            </mesh>
         </group>
     );
 };

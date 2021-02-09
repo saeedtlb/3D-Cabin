@@ -16,18 +16,21 @@ const Seats = () => {
                     position={[1.5, 0.09, -0.01]}
                     rotation={[Math.PI / 2, 0, -3.13]}
                     material-color='sandybrown'
+                    castShadow
                 />
                 <mesh
                     material={materials.sillones_COLOR_0}
                     geometry={nodes.Cube001.geometry}
                     position={[0.8, 0.06, -0.06]}
                     rotation={[Math.PI / 2, 0, -3.13]}
+                    castShadow
                 />
                 <mesh
                     material={materials.sillones_COLOR_0}
                     geometry={nodes.Cube002.geometry}
                     position={[-1.4, 0.03, -0.13]}
                     rotation={[Math.PI / 2, 0, -3.13]}
+                    castShadow
                 />
             </group>
         ));
