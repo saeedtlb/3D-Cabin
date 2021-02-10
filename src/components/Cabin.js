@@ -1,19 +1,12 @@
-import React, { useEffect, useRef } from 'react';
-import { useThree } from 'react-three-fiber';
+import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei/core/useGLTF';
 
 import { cabin } from '../info.json';
 
-const Cabin = ({ move }) => {
+const Cabin = () => {
     const group = useRef();
 
     const { nodes, materials } = useGLTF(cabin.url);
-
-    const { camera } = useThree();
-
-    useEffect(() => {
-        camera.position.z = move;
-    }, [move]);
 
     return (
         <group ref={group} position={[0.3, 2.2, 23]}>
