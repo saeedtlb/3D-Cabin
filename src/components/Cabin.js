@@ -9,11 +9,11 @@ const Cabin = ({ move }) => {
 
     const { nodes, materials } = useGLTF(cabin.url);
 
-    // const { camera } = useThree();
+    const { camera } = useThree();
 
-    // useEffect(() => {
-    //     camera.position.z = move;
-    // }, [move]);
+    useEffect(() => {
+        camera.position.z = move;
+    }, [move]);
 
     return (
         <group ref={group} position={[0.3, 2.2, 23]}>
@@ -21,9 +21,8 @@ const Cabin = ({ move }) => {
                 material={materials['BASE.005']}
                 geometry={nodes.Cube000.geometry}
                 receiveShadow
-                castShadow
             >
-                <meshPhysicalMaterial color='gray' />
+                <meshPhysicalMaterial color='#474747' />
             </mesh>
             <mesh
                 material={materials.VENTANA}
@@ -33,7 +32,11 @@ const Cabin = ({ move }) => {
                 material={materials.sillones}
                 geometry={nodes.Cube000_2.geometry}
             >
-                <meshPhysicalMaterial color='white' opacity={0.6} transparent />
+                <meshPhysicalMaterial
+                    color='#B89E8D'
+                    opacity={0.7}
+                    transparent
+                />
             </mesh>
         </group>
     );
