@@ -12,8 +12,24 @@ canvas {
     height: 100%;
 }
 
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.alert {
+    width: 300px;
+    height: 100px;
+    background-color: #d4edda;
+    color: #185927;
+    border-radius: 0 22px 22px 0;
+    margin: 10px;
+    font-size: 18px;
 }
+
+.head {
+    border-bottom: 1px solid black;
+    padding: 8px 16px;
+}
+
+.main {
+    padding: 16px;
+}
+
+/* back: #F8D7DA */
+/* color:  #721C24*/
