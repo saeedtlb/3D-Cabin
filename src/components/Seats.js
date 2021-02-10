@@ -1,42 +1,47 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei/core/useGLTF';
-
 import { seats } from '../info.json';
 
 const Seats = () => {
     const group = useRef();
     const { nodes, materials } = useGLTF(seats.url);
 
+    const seatMesh = row_num =>
+        Object.values(nodes)
+            .slice(1)
+            .map((node, i) => (
+                <mesh
+                    key={row_num + seats.numbers[i]}
+                    name={row_num + seats.numbers[i]}
+                    position={seats.position[i]}
+                    geometry={node.geometry}
+                    material={materials.sillones_COLOR_0}
+                    rotation={[Math.PI / 2, 0, -3.13]}
+                    castShadow
+                >
+                    <meshPhysicalMaterial color='#ED081A' />
+                </mesh>
+            ));
+
+    const changeColor = ({ stopPropagation, object }) => {
+        console.log(object.name);
+        stopPropagation();
+        object.material.color = {
+            r: 0,
+            g: 1,
+            b: 0,
+        };
+    };
+
     const renderSeats = () =>
-        seats.position.map(pos => (
-            <group ref={group} position={[-0.1, -1.2, pos]} key={pos}>
-                <mesh
-                    material={materials.sillones_COLOR_0}
-                    geometry={nodes.Cube000.geometry}
-                    position={[1.5, 0.09, -0.01]}
-                    rotation={[Math.PI / 2, 0, -3.13]}
-                    castShadow
-                >
-                    <meshPhysicalMaterial color='sandybrown' />
-                </mesh>
-                <mesh
-                    material={materials.sillones_COLOR_0}
-                    geometry={nodes.Cube001.geometry}
-                    position={[0.8, 0.06, -0.06]}
-                    rotation={[Math.PI / 2, 0, -3.13]}
-                    castShadow
-                >
-                    <meshPhysicalMaterial color='sandybrown' />
-                </mesh>
-                <mesh
-                    material={materials.sillones_COLOR_0}
-                    geometry={nodes.Cube002.geometry}
-                    position={[-1.4, 0.03, -0.13]}
-                    rotation={[Math.PI / 2, 0, -3.13]}
-                    castShadow
-                >
-                    <meshPhysicalMaterial color='sandybrown' />
-                </mesh>
+        seats.row_position.map((pos, i) => (
+            <group
+                ref={group}
+                position={[-0.1, -1.2, pos]}
+                key={pos}
+                onPointerDown={changeColor}
+            >
+                {seatMesh(i + 1)}
             </group>
         ));
 
