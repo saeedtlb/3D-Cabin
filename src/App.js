@@ -13,8 +13,13 @@ import Lights from './components/Lights';
 import data from './info.json';
 // styles
 import './app.css';
+// Provider to be able use store in Canvas Elements
+import { useGlobalDispatch, useGlobalState } from './context/globalContext';
 
 const App = () => {
+    const store = useGlobalState();
+    const dispatch = useGlobalDispatch();
+
     return (
         <>
             <Alert />
@@ -29,7 +34,7 @@ const App = () => {
                 <Lights />
                 <Plane />
                 <Suspense fallback={null}>
-                    <Model />
+                    <Model store={store} dispatch={dispatch} />
                 </Suspense>
                 <OrbitControls />
             </Canvas>
