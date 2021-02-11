@@ -20,6 +20,16 @@ canvas {
     border-radius: 0 22px 22px 0;
     margin: 10px;
     font-size: 18px;
+    transform: translateX(-110%);
+    transition: transform 0.5s cubic-bezier(0.28, 0.08, 0, 1.72);
+}
+
+.alert_show {
+    transform: translateX(0);
+}
+
+.alert_hide {
+    transform: translateX(-110%);
 }
 
 .head {
