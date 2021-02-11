@@ -8,14 +8,14 @@ const GlobalStateContext = createContext();
 const GlobalDispatchContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
-    const { state, dispatch } = useReducer(globalReducer, initialStore);
+    const [state, dispatch] = useReducer(globalReducer, initialStore);
 
     return (
-        <GlobalStateContext.Provider value={state}>
-            <GlobalDispatchContext.Provider value={dispatch}>
+        <GlobalDispatchContext.Provider value={dispatch}>
+            <GlobalStateContext.Provider value={state}>
                 {children}
-            </GlobalDispatchContext.Provider>
-        </GlobalStateContext.Provider>
+            </GlobalStateContext.Provider>
+        </GlobalDispatchContext.Provider>
     );
 };
 
