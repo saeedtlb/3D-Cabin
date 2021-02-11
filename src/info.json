@@ -1,6 +1,6 @@
 {
     "camera_setting": {
-        "position": [0, 4, 18],
+        "position": [0, 4, 20],
         "fov": 55,
         "near": 0.2,
         "far": 65
