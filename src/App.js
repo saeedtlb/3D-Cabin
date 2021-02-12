@@ -1,9 +1,10 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Canvas } from 'react-three-fiber';
 import * as THREE from 'three';
 import { OrbitControls } from '@react-three/drei/core/OrbitControls';
-// Alert
+// Side components
 import Alert from './helpers/Alert';
+import Tuturial from './helpers/Tuturial';
 // Models
 import Model from './components';
 import Plane from './components/Plane';
@@ -17,11 +18,13 @@ import './app.css';
 import { useGlobalDispatch, useGlobalState } from './context/globalContext';
 
 const App = () => {
+    const [showTuturial, setShowTuturial] = useState(true);
     const store = useGlobalState();
     const dispatch = useGlobalDispatch();
 
     return (
         <>
+            {showTuturial ? <Tuturial /> : null}
             <Alert />
             <Canvas
                 camera={data.camera_setting}
