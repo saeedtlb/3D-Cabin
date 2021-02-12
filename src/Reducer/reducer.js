@@ -1,34 +1,50 @@
-import { CHOOSE_SEAT, HIDE_MESSAGE, AVAILABLE, SOLD } from '../actions/type';
+import { HIDE_MESSAGE, AVAILABLE, SOLD, USER } from '../actions/type';
 
 export default (state, action) => {
     console.log(action);
 
     switch (action.type) {
-        case CHOOSE_SEAT:
-            const {
-                seat_num,
-                show_message,
-                styles,
-                seat_status,
-            } = action.payload;
-
-            const user_seat =
-                seat_status === SOLD
-                    ? state.user_seat
-                    : state.user_seat.add(seat_num);
-
+        case AVAILABLE:
             return {
                 ...state,
-                seat_num,
-                user_seat,
-                show_message: show_message,
-                styles: seat_status !== AVAILABLE ? styles : null,
+                seat_num: action.seat_num,
+                user_seat: state.user_seat.add(action.seat_num),
+                show_message: {
+                    status: true,
+                    head: 'Successful',
+                    body: 'Register',
+                },
+                styles: null,
+            };
+        case USER:
+            state.user_seat.delete(action.payload.seat_num);
+            return {
+                ...state,
+                seat_num: action.payload.seat_num,
+                styles: action.payload.styles,
+                show_message: {
+                    status: true,
+                    head: 'Remove',
+                    body: 'Remove your',
+                },
+            };
+        case SOLD:
+            return {
+                ...state,
+                seat_num: action.payload.seat_num,
+                styles: action.payload.styles,
+                show_message: {
+                    status: true,
+                    head: 'Sorry!!!',
+                    body: 'Already sold',
+                },
             };
         case HIDE_MESSAGE:
             return {
                 ...state,
-                show_message: false,
-                styles: null,
+                show_message: {
+                    status: false,
+                },
             };
         default:
             console.log('somthing went wrong');
