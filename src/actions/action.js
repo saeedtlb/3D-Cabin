@@ -1,28 +1,31 @@
-import { CHOOSE_SEAT, HIDE_MESSAGE, AVAILABLE, SOLD, USER } from './type';
+import { HIDE_MESSAGE, AVAILABLE, SOLD, USER } from './type';
 
-export const selectSeat = (seat_num, type = AVAILABLE) => {
-    let returnObj = {
-        type: CHOOSE_SEAT,
-        payload: {
-            seat_num,
-            show_message: true,
-            seat_status: type,
-        },
-    };
+export const availableSeat = seat_num => ({
+    type: AVAILABLE,
+    seat_num,
+});
 
-    if (type === SOLD) {
-        returnObj.payload.styles = {
+export const soldSeat = seat_num => ({
+    type: SOLD,
+    payload: {
+        seat_num,
+        styles: {
             backgroundColor: '#F8D7DA',
             color: '#721C24',
-        };
-    } else if (type === USER) {
-        returnObj.payload.styles = {
-            backgroundColor: 'sandybrown',
-            color: 'brown',
-        };
-    }
-    return returnObj;
-};
+        },
+    },
+});
+
+export const userSeat = seat_num => ({
+    type: USER,
+    payload: {
+        seat_num,
+        styles: {
+            backgroundColor: '#ffeb00ab',
+            color: 'black',
+        },
+    },
+});
 
 export const hideMessage = () => ({
     type: HIDE_MESSAGE,
