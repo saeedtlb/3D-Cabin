@@ -3,12 +3,13 @@ import { useGLTF } from '@react-three/drei/core/useGLTF';
 // app data
 import { seats } from '../info.json';
 // action
-import { selectSeat } from '../actions/action';
+import { availableSeat, soldSeat, userSeat } from '../actions/action';
 // types
-import { USER, AVAILABLE, SOLD } from '../actions/type';
+import { AVAILABLE, SOLD, USER } from '../actions/type';
 
 const Seats = ({ store, dispatch }) => {
     const { soldOuts, user_seat } = store;
+    // console.log(52, user_seat);
 
     const group = useRef();
     const { nodes, materials } = useGLTF(seats.url);
@@ -64,17 +65,15 @@ const Seats = ({ store, dispatch }) => {
         const { name: seat_num } = object;
         const status = checkSeatStatus(seat_num);
 
-        console.log(22, status);
-
         switch (status) {
             case AVAILABLE:
-                dispatch(selectSeat(seat_num));
+                dispatch(availableSeat(seat_num));
                 break;
             case USER:
-                dispatch(selectSeat(seat_num, USER));
+                dispatch(userSeat(seat_num));
                 break;
             default:
-                dispatch(selectSeat(seat_num, SOLD));
+                dispatch(soldSeat(seat_num));
                 break;
         }
     };
