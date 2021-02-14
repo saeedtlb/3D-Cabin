@@ -36,8 +36,8 @@ const App = () => {
           gl.shadowMap.type = THREE.PCFSoftShadowMap
         }}>
         <Lights />
-        <Plane />
         <Suspense fallback={null}>
+          <Plane />
           <Model store={store} dispatch={dispatch} />
         </Suspense>
         <OrbitControls />
