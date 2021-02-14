@@ -3,7 +3,8 @@ import React, { useEffect, useRef } from 'react'
 const Text = ({ hide, setHide }) => {
   const textRef = useRef()
 
-  const mainText = `This is C seats`
+  const speed = 85
+  const mainText = 'The leftmost column is C seats'
 
   let i = -1
 
@@ -20,7 +21,7 @@ const Text = ({ hide, setHide }) => {
       setTimeout(() => {
         textRef.current.textContent += mainText[i]
         addLetter()
-      }, 100)
+      }, speed)
     } else {
       setTimeout(() => removeLetter(), 2000)
     }
@@ -33,7 +34,7 @@ const Text = ({ hide, setHide }) => {
       setTimeout(() => {
         textRef.current.textContent = mainText.slice(0, i)
         removeLetter()
-      }, 100)
+      }, speed)
     } else setHide(true)
   }
 
