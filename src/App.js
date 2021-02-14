@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { Canvas } from 'react-three-fiber'
 import * as THREE from 'three'
 import { OrbitControls } from '@react-three/drei/core/OrbitControls'
@@ -24,6 +24,10 @@ const App = () => {
 
   const stopShowTuturial = () => setShowTuturial(false)
 
+  useEffect(() => {
+    THREE.DefaultLoadingManager.onLoad = () => setShowTuturial(true)
+  }, [])
+
   return (
     <>
       {showTuturial ? <Tuturial stopShowTuturial={stopShowTuturial} /> : null}
@@ -37,6 +41,7 @@ const App = () => {
         }}>
         <Lights />
         <Suspense fallback={null}>
+          {/* <Suspense fallback={<Loader />}> */}
           <Plane />
           <Model store={store} dispatch={dispatch} />
         </Suspense>
