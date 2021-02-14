@@ -1,21 +1,22 @@
 {
-    "camera_setting": {
-        "position": [0, 4, 20],
-        "fov": 55,
-        "near": 0.2,
-        "far": 65
-    },
-    "cabin": {
-        "url": "/models/cabin.glb"
-    },
-    "seats": {
-        "url": "/models/seat.glb",
-        "position": [
-            [1.5, 0.09, -0.01],
-            [0.8, 0.06, -0.06],
-            [-1.4, 0.03, -0.13]
-        ],
-        "row_position": [9.7, 7.7, 3, 1, -1, -3, -7.5, -10],
-        "numbers": ["A", "B", "C"]
-    }
+  "camera_setting": {
+    "position": [0, 4, 20],
+    "fov": 55,
+    "near": 0.2,
+    "far": 65
+  },
+  "cabin": {
+    "url": "/models/cabin.glb"
+  },
+  "seats": {
+    "url": "/models/seat.glb",
+    "position": [
+      [1.5, 0.09, -0.01],
+      [0.8, 0.06, -0.06],
+      [-1.4, 0.03, -0.13]
+    ],
+    "row_position": [9.7, 7.7, 3, 1, -1, -3, -7.5, -10],
+    "numbers": ["A", "B", "C"]
+  },
+  "Asphalt_texture": "models/texture/Road_texture.jpg"
 }
