@@ -9,7 +9,6 @@ import { AVAILABLE, SOLD, USER } from '../actions/type'
 
 const Seats = ({ store, dispatch }) => {
   const { soldOuts, user_seat } = store
-  // console.log(52, user_seat);
 
   const group = useRef()
   const { nodes, materials } = useGLTF(seats.url)
@@ -78,7 +77,7 @@ const Seats = ({ store, dispatch }) => {
 
   const renderSeats = () =>
     seats.row_position.map((pos, i) => (
-      <group ref={group} position={[-0.1, -1.2, pos]} key={pos} onPointerDown={selectedSeat}>
+      <group key={pos} ref={group} position={[-0.1, -1.2, pos]} onPointerDown={selectedSeat}>
         {seatMesh(i + 1)}
       </group>
     ))
