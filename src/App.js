@@ -19,6 +19,7 @@ import { useGlobalDispatch, useGlobalState } from './context/globalContext'
 
 const App = () => {
   const [showTuturial, setShowTuturial] = useState(true)
+
   const store = useGlobalState()
   const dispatch = useGlobalDispatch()
 
@@ -29,7 +30,10 @@ const App = () => {
   }, [])
 
   return (
-    <>
+    <div
+      className="wrapper"
+      onPointerDown={() => (document.body.style.cursor = 'grabbing')}
+      onPointerUp={() => (document.body.style.cursor = 'default')}>
       {showTuturial ? <Tuturial stopShowTuturial={stopShowTuturial} /> : null}
       <Alert />
       <Canvas
@@ -41,13 +45,12 @@ const App = () => {
         }}>
         <Lights />
         <Suspense fallback={null}>
-          {/* <Suspense fallback={<Loader />}> */}
           <Plane />
           <Model store={store} dispatch={dispatch} />
         </Suspense>
         <OrbitControls />
       </Canvas>
-    </>
+    </div>
   )
 }
 
