@@ -1,8 +1,6 @@
 import { HIDE_MESSAGE, AVAILABLE, SOLD, USER } from '../actions/type'
 
 const globalReducer = (state, action) => {
-  console.log(action)
-
   switch (action.type) {
     case AVAILABLE:
       return {
